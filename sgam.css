@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(13, 17, 8);
+}
+a{
+    color:rgb(13, 17, 8);
+    font-size: 18px;
+} 
+.navbar{
+    color:rgb(13, 17, 8) ;
+    height:90px ;
+    background-color: #cda34f;
+}
+.navbar-brand{
+    font-size: 40px;
+}
+label{
+    color: #cda34f;
+}
+.form-group{
+    width: 35%;
+}
+.button{
+    background-color: #cda34f;
+    border-style: unset;
+    margin-left: 110mm;
+}
+p{
+    color: #cda34f;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+form{
+    margin-top: 50px;
+    margin-left: 1cm;
+}
+.one{
+    color: #636B46;
+    text-align: left;
+    font-size: 25px;
+    margin-left: 15cm;
+    margin-top: -9cm;
+}
+.two{
+    color: #636B46;
+    text-align: left;
+    font-size: 25px;
+    margin-left: 15cm;
+margin-top: -2mm;   
+}
+.three{
+    color: #636B46;
+    text-align: left;
+    font-size: 25px;
+    margin-left: 15cm; 
+    margin-top: -2mm;
+}

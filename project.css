@@ -1,0 +1,60 @@
+body{
+    background-color: rgb(13, 17, 8);
+}
+a{
+    color:rgb(13, 17, 8);
+    font-size: 18px;
+} 
+.navbar{
+    color:rgb(13, 17, 8) ;
+    height:90px ;
+    background-color: #cda34f;
+}
+.navbar-brand{
+    font-size: 40px;
+}
+h1{
+text-align: center;
+line-height: 4;
+color: #636B46;
+}
+.column{
+    text-align: center;
+  padding: 30px;
+}
+.nav-item{
+color: #636B46;
+}
+.modal-content{
+    text-align: left;
+}
+.description{
+    margin-left: 7mm;
+}
+.moviename{
+    margin-left: 7mm;
+    margin-top: 7mm;
+    font-size: 25px;
+}
+.description1{
+    font-size:20px ;
+    margin-left: 7mm;
+  
+}
+.description2{
+    font-size: 20px;
+    margin-left: 7mm;
+}
+.form-control{
+    width: 35%;
+    margin-left: 17cm;
+    margin-bottom: 1cm;
+}
+label{
+    margin-left: 17cm;
+
+}
+.button{
+    width: 5%;
+    margin-left: 28cm;
+}
