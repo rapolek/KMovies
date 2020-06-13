@@ -7,7 +7,6 @@ a{
 } 
 .navbar{
     color:rgb(13, 17, 8) ;
-    height:90px ;
     background-color: #cda34f;
 }
 .navbar-brand{
@@ -23,6 +22,7 @@ label{
     background-color: #cda34f;
     border-style: unset;
     margin-left: 110mm;
+    margin-bottom: 50px;
 }
 p{
     color: #cda34f;
@@ -55,3 +55,23 @@ margin-top: -2mm;
     margin-left: 15cm; 
     margin-top: -2mm;
 }
+h1{
+    font-size: 10px;
+    text-align: left;
+    color: #cda34f;
+}
+@media (max-width: 800px) {
+    .one,
+    .two,
+    .three { display: none;}
+    .form-group{
+        width: 100%;
+    }
+    .button{
+        margin-left: 0;
+    }
+    form{margin-right: 1cm;}
+    
+}
+
+

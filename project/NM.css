@@ -7,7 +7,6 @@ a{
 } 
 .navbar{
     color:rgb(13, 17, 8) ;
-    height:90px ;
     background-color: #cda34f;
 }
 .navbar-brand{
@@ -18,43 +17,53 @@ text-align: center;
 line-height: 4;
 color: #636B46;
 }
-.column{
-    text-align: center;
-  padding: 30px;
-}
-.nav-item{
-color: #636B46;
+input{
+   height: 300px;
+   width: 200px;
+   margin: auto
 }
 .modal-content{
     text-align: left;
 }
-.description{
+.moviedescription{
     margin-left: 7mm;
 }
-.moviename{
+.movietitle{
     margin-left: 7mm;
     margin-top: 7mm;
     font-size: 25px;
 }
-.description1{
-    font-size:20px ;
-    margin-left: 7mm;
-  
-}
-.description2{
-    font-size: 20px;
-    margin-left: 7mm;
-}
 .form-control{
     width: 35%;
-    margin-left: 17cm;
+    margin-left: 19cm;
     margin-bottom: 1cm;
 }
 label{
-    margin-left: 17cm;
-
+    margin-left: 19cm;
+margin-top: 20px;
 }
 .button{
     width: 5%;
     margin-left: 28cm;
+    margin-bottom: 25px;
+    top: -400px;
+}
+.movieModal{
+    width: 220px;
+    height: 311;
+    margin-left: 40px;
+    display: inline-block;
+margin-bottom: 45px;
+}
+.moviedescription{
+    width: 550px;
+}
+.js-comment-list{
+    width: 500px;
+}
+hr.new{
+    color: black;
+    width: 1070px;
+margin-left: -9px;
+margin-right: -15px;
 }
