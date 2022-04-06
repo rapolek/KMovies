@@ -12,6 +12,7 @@ a{
 .navbar-brand{
     font-size: 40px;
 }
+
 label{
     color: #cda34f;
 }
@@ -36,25 +37,19 @@ form{
 }
 .one{
     color: #636B46;
-    text-align: left;
+    text-align: center;
     font-size: 25px;
     margin-left: 15cm;
     margin-top: -9cm;
 }
 .two{
     color: #636B46;
-    text-align: left;
+    text-align: center;
     font-size: 25px;
     margin-left: 15cm;
-margin-top: -2mm;   
+    margin-top: -2mm;   
 }
-.three{
-    color: #636B46;
-    text-align: left;
-    font-size: 25px;
-    margin-left: 15cm; 
-    margin-top: -2mm;
-}
+
 h1{
     font-size: 10px;
     text-align: left;
