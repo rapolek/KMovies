@@ -1,0 +1,143 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="NM.css" rel="stylesheet">
+  <title>
+    KMovies
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <!--MENU-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand">KMovies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">HOME / <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="New Movies.html">NEW MOVIES /</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Suggest a Movie.html">SUGGEST A MOVIE</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--MENU ends-->
+  <h1>
+    NEW MOVIES
+  </h1>
+
+  <div id="movies">
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+  <script>
+    /* eslint-disable */
+    // 1. connect to the database
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJB-BiVTADNebi7y4LiQbqI27tnNhIX2I",
+      authDomain: "kmovies-576bd.firebaseapp.com",
+      databaseURL: "https://kmovies-576bd.firebaseio.com",
+      projectId: "kmovies-576bd",
+      storageBucket: "kmovies-576bd.appspot.com",
+      messagingSenderId: "354269296377",
+      appId: "1:354269296377:web:8ba9c3bd75480034505428",
+      measurementId: "G-X9W7Z0QK9F"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+
+    // 2. get all movies from the database
+    db.collection("Movies").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        // 3. create html elements from movie data
+        const movie = doc.data();
+
+        const element = $('#movies');
+
+        const html = `
+          <input type="image" class="movieModal" src="${movie.picture}" alt="MOVIE" data-toggle="modal"
+            data-target=".${doc.id}">
+          <div class="modal ${doc.id}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+              <div class="modal-content">
+                <p class="movietitle">${movie.title}</p>
+                <p class="moviedescription">${movie.description}</p>
+                <ul class="js-comment-list" data-movie-id="${doc.id}">
+                  <hr class="new">
+                  ${movie.comments?.map(function(comment){ 
+                    return`<li> ${comment} </li> `
+                  }).join('')}
+                </ul>
+                <label for="formGroupMovieName">Comments</label>
+                <input type="comments" class="form-control js-comment-input" placeholder="Add a comment..." data-movie-id="${doc.id}">
+                <button type="submit" class="button js-comment-button" data-movie-id="${doc.id}">Post</button>
+                <!--comment box (ends)-->
+              </div>
+            </div>
+          </div>
+          </input>
+        `;
+
+        element.append(html);
+
+        // add comment adding code
+        const button = $(`.js-comment-button[data-movie-id="${doc.id}"]`);
+
+        button.on('click', function (event) {
+          // 1. write a comment (get the data from input)
+          const inputComment = $(`.js-comment-input[data-movie-id="${doc.id}"]`);
+          const comment = inputComment.val();
+          inputComment.val('');
+
+          // 2. save the comment
+
+          const movieReference = db.collection('Movies').doc(doc.id);
+          console.log(movie);
+          movie.comments.push(comment);
+          movieReference.update({ comments: movie.comments });
+
+          // 3. display in the html
+          const commentList = $(`.js-comment-list[data-movie-id="${doc.id}"]`);
+          commentList.append(`<li> ${comment} </li>`)
+        });
+      });
+    });
+
+  </script>
+</body>
+
+</html>

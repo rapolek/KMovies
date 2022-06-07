@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="sgam.css" rel="stylesheet">
+  <title>
+    KMovies
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <!--MENU-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand">KMovies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">HOME / <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="New Movies.html">NEW MOVIES /</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Suggest a Movie.html">SUGGEST A MOVIE</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--MENU ends-->
+
+  <p>SUGGEST A MOVIE</p>
+  <form>
+    <div class="form-group">
+      <label for="formGroupMovieName">Name of the movie</label>
+      <input type="name" class="form-control" id="formGroupExampleInput" placeholder="Write the name of the movie here">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Movie description</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"
+        placeholder="Describe the movie"></textarea>
+    </div>
+        <div class="form-group">
+      <label for="formGroupMoviePicture">Insert a picture</label>
+      <input type="name" class="form-control" id="formGroupMoviePicture" placeholder="Insert the adress of the image here">
+    </div>
+    <button type="button" class="button">Done</button>
+  </form>
+  <p class="one"> Write the name of your movie along with a short description and a picture of it.</p>
+  <p class="two">Then click "DONE" and share your movie with the world!</p>
+  <p class="three">⬅⬅⬅</p>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+  <script>
+    /* eslint-disable */
+    // 1. connect to the database
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJB-BiVTADNebi7y4LiQbqI27tnNhIX2I",
+      authDomain: "kmovies-576bd.firebaseapp.com",
+      databaseURL: "https://kmovies-576bd.firebaseio.com",
+      projectId: "kmovies-576bd",
+      storageBucket: "kmovies-576bd.appspot.com",
+      messagingSenderId: "354269296377",
+      appId: "1:354269296377:web:8ba9c3bd75480034505428",
+      measurementId: "G-X9W7Z0QK9F"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+
+    // 2. on button click get movie data from fields
+    const button = $('.button');
+
+    button.on('click', function () {
+      // 3. save new movie in the database
+      const inputsrc = $()
+      const inputTitle = $('#formGroupExampleInput');
+      const inputDescription = $('#exampleFormControlTextarea1');
+      const inputPicture = $('#formGroupMoviePicture');
+      const title = inputTitle.val();
+      const description = inputDescription.val();
+      const picture = inputPicture.val();
+      const movie = { title, description, picture, comments: [] }
+      //basically saves it
+      db.collection("Movies").add(movie);
+
+      // clear the inputs after saving the movie in the database
+      inputTitle.val('');
+      inputDescription.val('');
+      inputPicture.val('');
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>
